@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>렌즈로 여는 탐구 질문</title>
+  <meta name="description" content="개념적 렌즈로 질문 틀을 익히고, 우리 반 프로젝트 자료를 보며 탐구 질문을 만드는 4차시 활동">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/dunggeunmiso-b.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div id="brand"></div>
+      <div class="spacer"></div>
+    </header>
+
+    <section class="card pad-lg" aria-labelledby="hero-title">
+      <span class="deco green" style="width:280px;height:280px;right:-90px;top:-110px"></span>
+      <span class="deco cream" style="width:220px;height:220px;left:-80px;bottom:-110px"></span>
+      <div class="hero">
+        <div>
+          <div class="eyebrow">질문하는 힘 기르기 · 4차시 · 학생 한 명에 태블릿 한 대</div>
+          <h1 class="display" id="hero-title">렌즈를 끼우면<br>질문이 보여요!</h1>
+          <p class="lead">렌즈마다 다른 질문 틀이 있어요.<br>렌즈를 바꿔 끼우며 우리 반 프로젝트의 탐구 질문을 찾아봐요.</p>
+          <div class="row" id="lens-chips"></div>
+        </div>
+        <div class="hero-art" id="hero-art"></div>
+      </div>
+    </section>
+
+    <section class="choices" aria-label="사용자 고르기">
+      <a class="choice teacher" href="teacher.html">
+        <span class="art" id="art-teacher"></span>
+        <span>
+          <span class="t">선생님용</span>
+          <span class="d" style="display:block">프로젝트 자료를 올리고 게임 코드를 만들어요</span>
+        </span>
+        <span class="go" id="go-1"></span>
+      </a>
+      <a class="choice student" href="student.html">
+        <span class="art" id="art-student"></span>
+        <span>
+          <span class="t">학생용 (내 태블릿)</span>
+          <span class="d" style="display:block">게임 코드를 입력하고 렌즈로 탐구 질문을 만들어요</span>
+        </span>
+        <span class="go" id="go-2"></span>
+      </a>
+    </section>
+
+    <section class="steps" aria-label="활동 방법">
+      <div class="card step">
+        <div class="num">1</div>
+        <div class="t">렌즈를 통해 질문하기</div>
+        <div class="d">렌즈마다 다른 질문 틀을 살펴보고, 그림을 보며 질문을 만들어 연습해요.</div>
+      </div>
+      <div class="card step">
+        <div class="num">2</div>
+        <div class="t">프로젝트 탐구 질문 만들기</div>
+        <div class="d">선생님이 준 자료를 살펴보고, 궁금한 것을 내 질문으로 써요. 렌즈는 골라도 되고 안 골라도 돼요.</div>
+      </div>
+      <div class="card step">
+        <div class="num">3</div>
+        <div class="t">우리 반 탐구 질문 보드</div>
+        <div class="d">활동이 끝나면 모든 질문이 선생님 화면에 모여요. 함께 옮기고 묶으며 렌즈마다 탐구 질문을 골라요.</div>
+      </div>
+    </section>
+
+    <p class="foot">따로 준비할 것 없이 바로 쓸 수 있어요. 자료와 질문은 게임을 만든 뒤 24시간이 지나면 저절로 지워져요.</p>
+  </main>
+
+  <script type="module">
+    import { brandHtml, heroLensArt, teacherArt, studentArt, esc, ICON } from './js/ui.js';
+    import { DEFAULT_LENSES } from './js/lenses.js';
+    document.getElementById('brand').innerHTML = brandHtml();
+    document.getElementById('hero-art').innerHTML = '<div class="art-frame">' + heroLensArt() + '</div>';
+    document.getElementById('art-teacher').innerHTML = teacherArt();
+    document.getElementById('art-student').innerHTML = studentArt();
+    document.getElementById('go-1').innerHTML = ICON.arrow;
+    document.getElementById('go-2').innerHTML = ICON.arrow;
+    document.getElementById('lens-chips').innerHTML = DEFAULT_LENSES.map((l) => `<span class="chip lens-chip" style="background:${l.color.soft};color:${l.color.ink};border-color:${l.color.main}">${esc(l.name)}</span>`).join('');
+  </script>
+</body>
+</html>
